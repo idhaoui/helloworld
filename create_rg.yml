@@ -1,0 +1,13 @@
+---
+- name: Create Resource Group in Azure
+  hosts: localhost
+  gather_facts: false
+  vars:
+    - rg_name: "Demo-RG" 
+  tasks: 
+    
+    - name: create resource group "{{ rg_name }}"
+      azure.azcollection.azure_rm_resourcegroup:
+        name: "{{ rg_name }}"
+        location: "{{rg_location }}"
+        state: present
